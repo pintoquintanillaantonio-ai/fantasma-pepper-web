@@ -9,7 +9,7 @@ Proyecto web para un emprendimiento enfocado en ilusiones ópticas holográficas
 - **Proyector en Vivo:** Simulador interactivo de proyección en cuatro direcciones para probar el efecto con una pirámide sobre la pantalla.
 - **Asistente IA:** Generador de sugerencias visuales y técnicas según la idea del usuario y el dispositivo elegido.
 - **Contacto:** Formulario para registrar consultas o solicitudes de cotización.
-- **Panel Admin:** Acceso con contraseña para agregar nuevos productos al catálogo y revisar las solicitudes guardadas.
+- **Panel Admin:** Acceso con contraseña (`1234` para pruebas) para agregar nuevos productos al catálogo y revisar o limpiar las solicitudes guardadas.
 
 ## Enlace de publicación (GitHub Pages)
 https://pintoquintanillaantonio-ai.github.io/fantasma-pepper-web/
