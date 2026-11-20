@@ -164,3 +164,55 @@ function limpiarSolicitudes() {
 
 renderProductos();
 renderCarrito();
+
+let frameVideoSimId = null;
+
+function activarModoTextoSim() {
+  const capaTexto = document.getElementById("sim-capa-texto");
+  const capaVideo = document.getElementById("sim-capa-video");
+  const inputTexto = document.getElementById("sim-texto");
+  const video = document.getElementById("video-holograma-fijo");
+
+  if (capaTexto) capaTexto.style.display = "block";
+  if (capaVideo) capaVideo.style.display = "none";
+  if (inputTexto) inputTexto.style.display = "block";
+  if (video) video.pause();
+
+  if (frameVideoSimId) {
+    cancelAnimationFrame(frameVideoSimId);
+    frameVideoSimId = null;
+  }
+}
+
+function activarModoVideoSim() {
+  const capaTexto = document.getElementById("sim-capa-texto");
+  const capaVideo = document.getElementById("sim-capa-video");
+  const inputTexto = document.getElementById("sim-texto");
+  const video = document.getElementById("video-holograma-fijo");
+
+  if (capaTexto) capaTexto.style.display = "none";
+  if (capaVideo) capaVideo.style.display = "block";
+  if (inputTexto) inputTexto.style.display = "none";
+
+  if (!video) return;
+  video.play().catch(() => {});
+
+  if (frameVideoSimId) cancelAnimationFrame(frameVideoSimId);
+
+  const ids = ["holo-vid-top", "holo-vid-bottom", "holo-vid-left", "holo-vid-right"];
+
+  function dibujar() {
+    if (video.readyState >= 2) {
+      ids.forEach((id) => {
+        const canvas = document.getElementById(id);
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      });
+    }
+    frameVideoSimId = requestAnimationFrame(dibujar);
+  }
+
+  dibujar();
+}
