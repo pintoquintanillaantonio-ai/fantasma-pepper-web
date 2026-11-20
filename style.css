@@ -140,3 +140,8 @@ footer { text-align: center; padding: 2.2rem 1rem; border-top: 1px solid #1e293b
   h1 { font-size: 1.8rem; }
   nav { justify-content: center; }
 }
+@media (max-width: 768px) {
+  .container { padding: 2.2rem 1rem; }
+  h2 { font-size: 1.45rem; }
+  .proyector-box { height: 220px; }
+}
