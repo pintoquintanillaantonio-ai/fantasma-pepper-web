@@ -65,14 +65,28 @@ function enviarPedidoWhatsApp() {
   window.open(`https://wa.me/?text=${texto}`, "_blank");
 }
 
-function generarSugerenciaIA() {
-  const idea = document.getElementById("ia-idea").value.trim() || "un objeto 3D luminoso girando";
+function generarSugerenciaIA(ideaPredefinida) {
+  const inputIdea = document.getElementById("ia-idea");
+  const idea = (typeof ideaPredefinida === "string" ? ideaPredefinida : inputIdea.value).trim() || "una figura luminosa con movimiento suave";
+  if (typeof ideaPredefinida === "string") inputIdea.value = ideaPredefinida;
+
   const disp = document.getElementById("ia-dispositivo").value;
+  const textoMinuscula = idea.toLowerCase();
+
+  let enfoque = "Proyección visual equilibrada con rotación suave de 360° y transiciones limpias.";
+  if (textoMinuscula.includes("logo") || textoMinuscula.includes("marca") || textoMinuscula.includes("tienda")) {
+    enfoque = "Enfoque de marca: muestra el logotipo centrado, giro pausado y un destello sutil para facilitar su lectura en el visor.";
+  } else if (textoMinuscula.includes("regalo") || textoMinuscula.includes("cumple") || textoMinuscula.includes("amor")) {
+    enfoque = "Enfoque emocional: usa tonos cálidos o cian suave, movimiento lento y un mensaje corto fácil de leer.";
+  } else if (textoMinuscula.includes("clase") || textoMinuscula.includes("educ") || textoMinuscula.includes("ciencia")) {
+    enfoque = "Enfoque educativo: destaca contornos definidos y cambios pausados para explicar cómo se refleja la luz.";
+  }
+
   document.getElementById("ia-respuesta").innerHTML = `
-    <strong>Recomendación IA para "${idea}":</strong><br>
-    • <strong>Kit sugerido:</strong> ${disp}<br>
-    • <strong>Configuración óptica:</strong> Fondo 100% negro (#000000) con proyección simétrica en 4 ángulos (45° de inclinación en el acrílico).<br>
-    • <strong>Paleta recomendada:</strong> Cian neón, blanco puro o violeta para evitar reflejos fantasmas dobles.
+    <strong>Propuesta IA para "${idea}":</strong><br>
+    • <strong>Dispositivo recomendado:</strong> ${disp}<br>
+    • <strong>Guion y estilo:</strong> ${enfoque}<br>
+    • <strong>Ajuste óptico:</strong> Fondo negro puro (#000000) con inclinación de 45° para evitar reflejos dobles.
   `;
 }
 
