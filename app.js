@@ -43,6 +43,11 @@ function vaciarCarrito() {
   renderCarrito();
 }
 
+function quitarDelCarrito(idx) {
+  carrito.splice(idx, 1);
+  renderCarrito();
+}
+
 function renderCarrito() {
   const lista = document.getElementById("lista-carrito");
   const totalEl = document.getElementById("total-carrito");
@@ -51,7 +56,12 @@ function renderCarrito() {
 
   carrito.forEach((item, i) => {
     total += Number(item.precio);
-    lista.innerHTML += `<li>• ${item.nombre} — $${Number(item.precio).toFixed(2)}</li>`;
+    lista.innerHTML += `
+      <li style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; margin-bottom:0.4rem;">
+        <span>• ${item.nombre} — $${Number(item.precio).toFixed(2)}</span>
+        <button type="button" onclick="quitarDelCarrito(${i})" style="background:transparent; color:#f87171; border:1px solid #f87171; border-radius:6px; padding:0.15rem 0.45rem; cursor:pointer; font-size:0.8rem;">Quitar</button>
+      </li>
+    `;
   });
 
   totalEl.textContent = total.toFixed(2);
