@@ -75,14 +75,31 @@
 
   <section id="simulador" class="container">
     <h2>Proyector Holográfico en Vivo</h2>
-    <p>Escribe un texto corto y coloca tu pirámide de acetato/acrílico en el centro de la pantalla para probar el efecto.</p>
+    <p>Prueba el modo de texto o cambia al video holográfico y coloca tu pirámide truncada en el centro de la pantalla.</p>
     <div class="card">
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+        <button type="button" class="btn" id="btn-modo-texto" onclick="activarModoTextoSim()">✍ Modo Texto</button>
+        <button type="button" class="btn btn-outline" id="btn-modo-video" onclick="activarModoVideoSim()">🎬 Video Holográfico</button>
+      </div>
+
       <input type="text" id="sim-texto" placeholder="Escribe tu nombre o marca (Ej: PEPPER 3D)" oninput="actualizarSimulador()" />
-      <div class="proyector-box">
-        <div class="holo-item holo-top">✦ PEPPER 3D ✦</div>
-        <div class="holo-item holo-bottom">✦ PEPPER 3D ✦</div>
-        <div class="holo-item holo-left">✦ PEPPER 3D ✦</div>
-        <div class="holo-item holo-right">✦ PEPPER 3D ✦</div>
+
+      <div class="proyector-box" id="proyector-box" style="margin-top: 1rem;">
+        <div id="sim-capa-texto">
+          <div class="holo-item holo-top">✦ PEPPER 3D ✦</div>
+          <div class="holo-item holo-bottom">✦ PEPPER 3D ✦</div>
+          <div class="holo-item holo-left">✦ PEPPER 3D ✦</div>
+          <div class="holo-item holo-right">✦ PEPPER 3D ✦</div>
+        </div>
+
+        <div id="sim-capa-video" style="display: none; width: 100%; height: 100%; position: relative;">
+          <canvas id="holo-vid-top" class="holo-video-lado holo-top" width="140" height="75"></canvas>
+          <canvas id="holo-vid-bottom" class="holo-video-lado holo-bottom" width="140" height="75"></canvas>
+          <canvas id="holo-vid-left" class="holo-video-lado holo-left" width="140" height="75"></canvas>
+          <canvas id="holo-vid-right" class="holo-video-lado holo-right" width="140" height="75"></canvas>
+
+          <video id="video-holograma-fijo" src="holograma.mp4" loop muted playsinline preload="auto" style="display: none;"></video>
+        </div>
       </div>
     </div>
   </section>
