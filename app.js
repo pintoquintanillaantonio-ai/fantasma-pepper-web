@@ -155,6 +155,11 @@ function renderSolicitudes() {
     ul.innerHTML += `<li><strong>${s.nombre}</strong> (${s.correo} - ${s.fecha}): ${s.mensaje}</li>`;
   });
 }
+function limpiarSolicitudes() {
+  solicitudes = [];
+  localStorage.setItem("solicitudes_pepper", JSON.stringify(solicitudes));
+  renderSolicitudes();
+}
 
 renderProductos();
 renderCarrito();
