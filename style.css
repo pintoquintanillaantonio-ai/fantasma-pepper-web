@@ -124,10 +124,10 @@ input, select, textarea {
   text-shadow: 0 0 12px var(--accent);
   animation: pulso 2.5s infinite ease-in-out;
 }
-.holo-top { top: 18px; transform: rotate(180deg) scaleY(-1); }
-.holo-bottom { bottom: 18px; transform: scaleY(-1); }
-.holo-left { left: 24px; transform: rotate(90deg) scaleY(-1); }
-.holo-right { right: 24px; transform: rotate(-90deg) scaleY(-1); }
+.holo-top { top: 18px; left: 50%; transform: translateX(-50%) rotate(180deg) scaleY(-1); }
+.holo-bottom { bottom: 18px; left: 50%; transform: translateX(-50%) scaleY(-1); }
+.holo-left { left: 24px; top: 50%; transform: translateY(-50%) rotate(90deg) scaleY(-1); }
+.holo-right { right: 24px; top: 50%; transform: translateY(-50%) rotate(-90deg) scaleY(-1); }
 
 @keyframes pulso {
   0%, 100% { opacity: 0.75; scale: 0.96; }
