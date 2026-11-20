@@ -92,16 +92,18 @@
           <div class="holo-item holo-right">✦ PEPPER 3D ✦</div>
         </div>
 
-        <div id="sim-capa-video" style="display: none; width: 100%; height: 100%; position: relative;">
-          <canvas id="holo-vid-top" class="holo-video-lado holo-top" width="140" height="75"></canvas>
-          <canvas id="holo-vid-bottom" class="holo-video-lado holo-bottom" width="140" height="75"></canvas>
-          <canvas id="holo-vid-left" class="holo-video-lado holo-left" width="140" height="75"></canvas>
-          <canvas id="holo-vid-right" class="holo-video-lado holo-right" width="140" height="75"></canvas>
-
-          <video id="video-holograma-fijo" src="holograma.mp4" loop muted playsinline preload="auto" style="display: none;"></video>
+       <div id="sim-capa-video" style="display: none; width: 100%; height: 100%; position: relative;">
+          <video
+            id="video-holograma-fijo"
+            src="holograma.mp4"
+            controls
+            loop
+            muted
+            playsinline
+            preload="auto"
+            class="holo-video-unico"
+          ></video>
         </div>
-      </div>
-    </div>
   </section>
 
   <section id="ia" class="container">
