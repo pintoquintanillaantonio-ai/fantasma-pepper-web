@@ -69,10 +69,11 @@ function renderCarrito() {
 
 function enviarPedidoWhatsApp() {
   if (!carrito.length) return alert("Agrega al menos un producto al pedido.");
+  const telefono = "593998868740";
   const detalle = carrito.map(i => `- ${i.nombre} ($${Number(i.precio).toFixed(2)})`).join("%0A");
   const total = document.getElementById("total-carrito").textContent;
   const texto = `Hola, quiero hacer este pedido de Fantasma de Pepper:%0A${detalle}%0ATotal: $${total}`;
-  window.open(`https://wa.me/?text=${texto}`, "_blank");
+  window.open(`https://wa.me/${telefono}?text=${texto}`, "_blank");
 }
 
 function generarSugerenciaIA(ideaPredefinida) {
