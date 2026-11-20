@@ -4,43 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fantasma de Pepper | Ilusión Óptica Holográfica</title>
-  <style>
-    :root {
-      --bg: #0b0f19;
-      --card: #131b2e;
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-      --accent: #22d3ee;
-      --accent2: #a855f7;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
-    body { background: var(--bg); color: var(--text); line-height: 1.6; }
-    header { background: #070a12; border-bottom: 1px solid #1e293b; position: sticky; top: 0; z-index: 10; }
-    nav { max-width: 1100px; margin: auto; padding: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .logo { font-weight: bold; color: var(--accent); font-size: 1.1rem; }
-    nav ul { list-style: none; display: flex; gap: 1rem; flex-wrap: wrap; }
-    nav a { color: var(--text); text-decoration: none; font-size: 0.95rem; }
-    nav a:hover { color: var(--accent); }
-    .container { max-width: 1100px; margin: auto; padding: 3rem 1rem; }
-    .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; align-items: center; }
-    h1 { font-size: 2.2rem; margin-bottom: 1rem; }
-    h1 span { color: var(--accent); }
-    h2 { font-size: 1.7rem; margin-bottom: 0.75rem; color: var(--accent); }
-    p { color: var(--muted); margin-bottom: 1rem; }
-    .btn { display: inline-block; background: linear-gradient(90deg, var(--accent), var(--accent2)); color: #050811; font-weight: bold; padding: 0.7rem 1.2rem; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; }
-    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--accent); }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
-    .card { background: var(--card); border: 1px solid #1e293b; border-radius: 12px; padding: 1.25rem; }
-    .price { color: var(--accent); font-weight: bold; font-size: 1.1rem; margin: 0.5rem 0; }
-    table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; background: var(--card); border-radius: 10px; overflow: hidden; }
-    th, td { padding: 0.8rem; text-align: left; border-bottom: 1px solid #1e293b; }
-    th { background: #1e293b; color: var(--accent); }
-    details { background: var(--card); border: 1px solid #1e293b; border-radius: 8px; padding: 0.9rem 1rem; margin-bottom: 0.75rem; }
-    summary { cursor: pointer; font-weight: bold; }
-    input, select, textarea { width: 100%; padding: 0.7rem; margin-bottom: 0.8rem; border-radius: 8px; border: 1px solid #334155; background: #0b0f19; color: var(--text); }
-    .box-resultado { background: #0b0f19; border-left: 4px solid var(--accent2); padding: 1rem; border-radius: 8px; margin-top: 0.75rem; }
-    footer { text-align: center; padding: 2rem 1rem; border-top: 1px solid #1e293b; margin-top: 3rem; }
-  </style>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -50,6 +15,7 @@
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#beneficios">Beneficios</a></li>
         <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#simulador">Proyector en Vivo</a></li>
         <li><a href="#ia">IA Holográfica</a></li>
         <li><a href="#contacto">Contacto</a></li>
         <li><a href="#admin">Admin</a></li>
@@ -58,42 +24,45 @@
   </header>
 
   <section id="inicio" class="container hero">
-    <div>
-      <h1>Ilusión óptica holográfica con <span>Fantasma de Pepper</span>.</h1>
-      <p>Creamos pirámides, visores y animaciones visuales basadas en el efecto clásico del Fantasma de Pepper para exhibiciones, regalos, marcas y experiencias interactivas.</p>
+    <div data-aos="fade-right">
+      <span class="badge">ILUSIÓN ÓPTICA 3D</span>
+      <h1>Convierte cualquier pantalla en un <span>holograma flotante</span>.</h1>
+      <p>Diseñamos visores piramidales y animaciones basadas en el principio del Fantasma de Pepper para emprendimientos, vitrinas, educación y regalos únicos.</p>
       <a href="#catalogo" class="btn">Ver Catálogo</a>
-      <a href="#ia" class="btn btn-outline">Asistente IA</a>
+      <a href="#simulador" class="btn btn-outline">Probar Simulador</a>
     </div>
-    <div class="card">
-      <h3>🛒 Resumen de Pedido</h3>
+
+    <div class="card" data-aos="fade-left">
+      <h3>🛒 Tu Pedido</h3>
       <ul id="lista-carrito" style="list-style: none; margin: 1rem 0;"></ul>
       <p><strong>Total: $<span id="total-carrito">0.00</span></strong></p>
-      <button class="btn" onclick="vaciarCarrito()">Limpiar carrito</button>
+      <button class="btn" onclick="enviarPedidoWhatsApp()">💬 Pedir por WhatsApp</button>
+      <button class="btn btn-outline" onclick="vaciarCarrito()">Limpiar</button>
     </div>
   </section>
 
   <section id="beneficios" class="container">
-    <h2>¿Por qué Fantasma de Pepper?</h2>
-    <p>Una técnica óptica clásica reinterpretada para proyectos modernos y accesibles.</p>
+    <h2>¿Por qué elegir Fantasma de Pepper?</h2>
+    <p>Una técnica óptica clásica adaptada a pantallas modernas sin necesidad de gafas especiales.</p>
     <div class="grid">
-      <div class="card">
-        <h3>✨ Efecto Flotante</h3>
-        <p>Genera la sensación visual de imágenes suspendidas mediante reflexión en ángulo.</p>
+      <div class="card" data-aos="zoom-in">
+        <h3>✨ Reflexión a 45°</h3>
+        <p>Las caras inclinadas reflejan la luz de la pantalla creando la ilusión de un objeto suspendido en el aire.</p>
       </div>
-      <div class="card">
-        <h3>📱 Fácil de Probar</h3>
-        <p>Funciona con pantallas de celular, tablet o monitor y un visor piramidal.</p>
+      <div class="card" data-aos="zoom-in">
+        <h3>📱 Compatible con Todo</h3>
+        <p>Funciona con teléfonos móviles, tablets o monitores usando contenido en fondo negro.</p>
       </div>
-      <div class="card">
-        <h3>🎯 Ideal para Emprender</h3>
-        <p>Perfecto para stands, vitrinas, educación, eventos y regalos personalizados.</p>
+      <div class="card" data-aos="zoom-in">
+        <h3>🚀 Impacto Visual</h3>
+        <p>Capta la atención al instante en ferias, locales comerciales, presentaciones y regalos.</p>
       </div>
     </div>
   </section>
 
   <section id="catalogo" class="container">
-    <h2>Catálogo</h2>
-    <p>Selecciona un producto para sumarlo a tu pedido de prueba.</p>
+    <h2>Catálogo de Productos</h2>
+    <p>Elige tu visor o paquete de animación holográfica.</p>
     <div class="grid" id="grid-productos"></div>
 
     <table>
@@ -104,183 +73,90 @@
     </table>
   </section>
 
-  <section id="ia" class="container">
-    <h2>Asistente IA para tu Holograma</h2>
-    <p>Describe qué quieres proyectar y te sugerimos una idea visual y formato recomendado.</p>
+  <section id="simulador" class="container">
+    <h2>Proyector Holográfico en Vivo</h2>
+    <p>Escribe un texto corto y coloca tu pirámide de acetato/acrílico en el centro de la pantalla para probar el efecto.</p>
     <div class="card">
-      <input type="text" id="ia-idea" placeholder="Ej: un logo girando con partículas luminosas para una tienda" />
+      <input type="text" id="sim-texto" placeholder="Escribe tu nombre o marca (Ej: PEPPER 3D)" oninput="actualizarSimulador()" />
+      <div class="proyector-box">
+        <div class="holo-item holo-top">✦ PEPPER 3D ✦</div>
+        <div class="holo-item holo-bottom">✦ PEPPER 3D ✦</div>
+        <div class="holo-item holo-left">✦ PEPPER 3D ✦</div>
+        <div class="holo-item holo-right">✦ PEPPER 3D ✦</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ia" class="container">
+    <h2>Asistente IA de Diseño Holográfico</h2>
+    <p>Cuéntanos qué quieres proyectar y nuestra IA te sugiere el kit y configuración visual ideal.</p>
+    <div class="card">
+      <input type="text" id="ia-idea" placeholder="Ej: el logo de mi marca girando con chispas azules" />
       <select id="ia-dispositivo">
-        <option value="Celular (Visor Mini)">Celular (Visor Mini)</option>
-        <option value="Tablet (Visor Mediano)">Tablet (Visor Mediano)</option>
-        <option value="Pantalla / Stand (Proyección Grande)">Pantalla / Stand (Proyección Grande)</option>
+        <option value="Visor Pirámide Mini (Celular)">Celular (Visor Mini)</option>
+        <option value="Display Holográfico Pro (Tablet)">Tablet (Display Pro)</option>
+        <option value="Animación 3D Personalizada (4 caras)">Solo Animación 3D</option>
       </select>
       <button class="btn" onclick="generarSugerenciaIA()">Generar recomendación IA</button>
-      <div id="ia-respuesta" class="box-resultado">Aquí aparecerá tu sugerencia de diseño holográfico.</div>
+      <div id="ia-respuesta" class="box-resultado">Aquí aparecerá tu sugerencia técnica y creativa.</div>
     </div>
   </section>
 
   <section class="container">
     <h2>Preguntas Frecuentes</h2>
     <details>
-      <summary>¿Qué es el efecto Fantasma de Pepper?</summary>
-      <p>Es una ilusión óptica que utiliza una superficie transparente inclinada (como acrílico o vidrio) para reflejar una imagen y hacerla parecer flotante.</p>
+      <summary>🔮 ¿Cómo funciona la ilusión del Fantasma de Pepper?</summary>
+      <p>Se basa en la reflexión de una imagen brillante sobre una lámina transparente inclinada a 45 grados frente a un fondo oscuro.</p>
     </details>
     <details>
-      <summary>¿Necesito lentes especiales?</summary>
-      <p>No, el efecto se aprecia a simple vista colocando el visor sobre una pantalla oscura con el contenido adecuado.</p>
+      <summary>📦 ¿Qué incluyen los kits físicos?</summary>
+      <p>Incluyen la estructura piramidal lista para armar o ensamblada, guía de uso y acceso a videos de prueba.</p>
+    </details>
+    <details>
+      <summary>🎬 ¿Hacen animaciones con mi propio logo?</summary>
+      <p>Sí, adaptamos tu logotipo, texto o modelo 3D al formato de 4 caras listo para reproducir.</p>
     </details>
   </section>
 
   <section id="contacto" class="container">
-    <h2>Contacto</h2>
-    <p>Envía una solicitud o cotización para tu proyecto holográfico.</p>
+    <h2>Contáctanos</h2>
+    <p>Envía tu consulta o solicita una cotización personalizada.</p>
     <form id="form-contacto" class="card">
       <input type="text" id="c-nombre" placeholder="Tu nombre" required />
-      <input type="email" id="c-correo" placeholder="Tu correo" required />
-      <textarea id="c-mensaje" rows="3" placeholder="Cuéntanos qué necesitas..." required></textarea>
+      <input type="email" id="c-correo" placeholder="Tu correo electrónico" required />
+      <textarea id="c-mensaje" rows="3" placeholder="¿Qué proyecto holográfico tienes en mente?" required></textarea>
       <button type="submit" class="btn">Enviar solicitud</button>
-      <p id="c-estado" style="margin-top:0.75rem;"></p>
+      <p id="c-estado" style="margin-top:0.75rem; color: var(--accent);"></p>
     </form>
   </section>
 
   <section id="admin" class="container">
-    <h2>Panel Admin</h2>
-    <p>Acceso rápido para agregar un producto al catálogo y revisar solicitudes guardadas.</p>
+    <h2>Panel de Administración</h2>
+    <p>Zona de gestión interna para actualizar catálogo y revisar mensajes.</p>
     <div class="card">
       <div id="admin-login">
-        <input type="password" id="admin-pass" placeholder="Clave admin (prueba: 1234)" />
-        <button class="btn" onclick="entrarAdmin()">Ingresar al panel</button>
+        <input type="password" id="admin-pass" placeholder="Contraseña de administrador (1234)" />
+        <button class="btn" onclick="entrarAdmin()">Iniciar sesión</button>
       </div>
       <div id="admin-panel" style="display:none;">
-        <h3>Agregar nuevo producto</h3>
+        <h3>Agregar nuevo producto al catálogo</h3>
         <input type="text" id="p-nombre" placeholder="Nombre del producto" />
-        <input type="text" id="p-formato" placeholder="Formato (Ej: Acrílico 10cm)" />
-        <input type="number" id="p-precio" step="0.50" placeholder="Precio (Ej: 12.00)" />
-        <button class="btn" onclick="agregarProducto()">Agregar al catálogo</button>
-        <h3 style="margin-top:1.5rem;">Solicitudes registradas</h3>
+        <input type="text" id="p-formato" placeholder="Formato / Medidas" />
+        <input type="number" id="p-precio" step="0.50" placeholder="Precio ($)" />
+        <button class="btn" onclick="agregarProducto()">Guardar producto</button>
+
+        <h3 style="margin-top:1.5rem;">Solicitudes recibidas</h3>
         <ul id="lista-solicitudes" style="margin-top:0.5rem; padding-left:1.2rem;"></ul>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>✦ Fantasma de Pepper — Proyecto Final Básico</p>
+    <p>✦ Fantasma de Pepper — Ilusión Óptica Holográfica</p>
   </footer>
 
-  <script>
-    let productos = [
-      { nombre: "Visor Pirámide Mini", formato: "Celular", precio: 8.00 },
-      { nombre: "Display Holográfico Base", formato: "Tablet", precio: 18.00 },
-      { nombre: "Animación 3D Personalizada", formato: "Archivo MP4", precio: 12.00 }
-    ];
-    let carrito = [];
-    let solicitudes = JSON.parse(localStorage.getItem("solicitudes_pepper") || "[]");
-
-    function renderProductos() {
-      const grid = document.getElementById("grid-productos");
-      const tabla = document.getElementById("tabla-productos");
-      grid.innerHTML = "";
-      tabla.innerHTML = "";
-
-      productos.forEach((p, idx) => {
-        grid.innerHTML += `
-          <div class="card">
-            <h3>${p.nombre}</h3>
-            <p>Formato: ${p.formato}</p>
-            <div class="price">$${Number(p.precio).toFixed(2)}</div>
-            <button class="btn" onclick="agregarCarrito(${idx})">+ Agregar</button>
-          </div>
-        `;
-        tabla.innerHTML += `
-          <tr>
-            <td>${p.nombre}</td>
-            <td>${p.formato}</td>
-            <td>$${Number(p.precio).toFixed(2)}</td>
-          </tr>
-        `;
-      });
-    }
-
-    function agregarCarrito(idx) {
-      carrito.push(productos[idx]);
-      renderCarrito();
-    }
-
-    function vaciarCarrito() {
-      carrito = [];
-      renderCarrito();
-    }
-
-    function renderCarrito() {
-      const lista = document.getElementById("lista-carrito");
-      const totalEl = document.getElementById("total-carrito");
-      lista.innerHTML = carrito.length ? "" : "<li>Tu carrito está vacío.</li>";
-      let total = 0;
-      carrito.forEach(item => {
-        total += Number(item.precio);
-        lista.innerHTML += `<li>• ${item.nombre} — $${Number(item.precio).toFixed(2)}</li>`;
-      });
-      totalEl.textContent = total.toFixed(2);
-    }
-
-    function generarSugerenciaIA() {
-      const idea = document.getElementById("ia-idea").value.trim() || "una figura luminosa con movimiento suave";
-      const disp = document.getElementById("ia-dispositivo").value;
-      document.getElementById("ia-respuesta").innerHTML = `
-        <strong>Propuesta para "${idea}":</strong><br>
-        • <strong>Dispositivo:</strong> ${disp}<br>
-        • <strong>Consejo visual:</strong> Usa fondo negro puro (#000000) y colores brillantes (cian, blanco o magenta) para mejorar el contraste del Fantasma de Pepper.<br>
-        • <strong>Duración sugerida:</strong> Loop continuo de 10 a 15 segundos con rotación suave.
-      `;
-    }
-
-    document.getElementById("form-contacto").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const nueva = {
-        nombre: document.getElementById("c-nombre").value,
-        correo: document.getElementById("c-correo").value,
-        mensaje: document.getElementById("c-mensaje").value
-      };
-      solicitudes.push(nueva);
-      localStorage.setItem("solicitudes_pepper", JSON.stringify(solicitudes));
-      document.getElementById("c-estado").textContent = "¡Solicitud guardada correctamente!";
-      this.reset();
-      renderSolicitudes();
-    });
-
-    function entrarAdmin() {
-      const pass = document.getElementById("admin-pass").value;
-      if (pass === "1234") {
-        document.getElementById("admin-login").style.display = "none";
-        document.getElementById("admin-panel").style.display = "block";
-        renderSolicitudes();
-      } else {
-        alert("Clave incorrecta. Usa 1234 para probar.");
-      }
-    }
-
-    function agregarProducto() {
-      const nombre = document.getElementById("p-nombre").value.trim();
-      const formato = document.getElementById("p-formato").value.trim();
-      const precio = parseFloat(document.getElementById("p-precio").value);
-      if (!nombre || !formato || isNaN(precio)) return alert("Completa todos los campos del producto.");
-      productos.push({ nombre, formato, precio });
-      renderProductos();
-      document.getElementById("p-nombre").value = "";
-      document.getElementById("p-formato").value = "";
-      document.getElementById("p-precio").value = "";
-    }
-
-    function renderSolicitudes() {
-      const ul = document.getElementById("lista-solicitudes");
-      ul.innerHTML = solicitudes.length ? "" : "<li>Aún no hay solicitudes registradas.</li>";
-      solicitudes.forEach(s => {
-        ul.innerHTML += `<li><strong>${s.nombre}</strong> (${s.correo}): ${s.mensaje}</li>`;
-      });
-    }
-
-    renderProductos();
-    renderCarrito();
-  </script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 700, once: true });</script>
+  <script src="app.js"></script>
 </body>
 </html>
